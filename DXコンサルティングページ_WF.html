@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<!-- WF: DXコンサルティングページ 改修案 -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalabe=no">
+<meta name="robots" content="noindex, nofollow">
+<title>【WF】DXコンサルティングで業務効率化と事業の成長を支援 | 青山システムコンサルティング株式会社</title>
+<link rel="icon" href="https://www.asckk.co.jp/wp_asc/wp-content/themes/asckk2/images/favicon.ico">
+<style type="text/css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+</style>
+<link rel="stylesheet" href="./DXコンサルティングページ_files/autoptimize_single_b1c191916d9d604f0f5bdcb7e1d783d5.css" type="text/css" media="all">
+<style>
+:root{--wp--preset--color--black: #000000;--wp--preset--color--white: #ffffff;}
+:where(.is-layout-flex){gap: 0.5em;}
+body .is-layout-flex{display: flex;}
+.is-layout-flex{flex-wrap: wrap;align-items: center;}
+.is-layout-flex > :is(*, div){margin: 0;}
+.has-small-font-size{font-size:13px !important;}
+.has-medium-font-size{font-size:20px !important;}
+.has-large-font-size{font-size:36px !important;}
+</style>
+<link rel="stylesheet" href="./DXコンサルティングページ_files/autoptimize_single_e3afd20fa1b5cdf31d804a731f70ac00.css" type="text/css" media="all">
+<link rel="stylesheet" href="./DXコンサルティングページ_files/autoptimize_single_e8175462ab0e2a8443177c137432501c.css" type="text/css" media="all">
+<link rel="stylesheet" href="./DXコンサルティングページ_files/autoptimize_single_73d29ecb3ae4eb2b78712fab3a46d32d.css" type="text/css" media="all">
+<style>
+body{margin:0;padding: 0;}
+.head_h1container { background: #003399!important; }
+.head_h1container > div { margin: 0 auto; color: #fff; font-size: 13px; position: relative; }
+.head_h1container h1, .head_h1container p:first-child { color: #fff; margin: 0; font-size: 13px; word-break: break-all; margin-right: auto; }
+.head_access i, .head_access a { color: #fff; }
+#top-header { position:absolute; background:#ffffff; width: 100%; height:65px; left:0; }
+.site-branding.main-logo { padding: 10px 0; margin-left: 4px; }
+#site-navigation .slicknav_menu { display: none; background: none; }
+#site-navigation ul li { position: relative; list-style: none; }
+#menu-main-menu { display:flex; justify-content: flex-end; }
+.menu > ul > li > a { border-left: 1px solid #ececec; color: #141414; display: inline-block; font-size: min(0.875vw,14px); font-weight: 300; line-height: 60px; padding: 0 14px; text-transform: uppercase; }
+#mobile-menu { display: none; background: #ffffff; }
+main { padding-top:60px; }
+@media (max-width: 992px) { main{padding-top:inherit;} #top-header{position:relative;height:inherit;} }
+</style>
+<link href="./DXコンサルティングページ_files/styles.min.css" rel="stylesheet">
+<link href="./DXコンサルティングページ_files/services.min.css" rel="stylesheet">
+<script src="./DXコンサルティングページ_files/jquery.min.js"></script>
+
+<!-- =====================================================
+     WF アノテーション用スタイル
+     ===================================================== -->
+<style id="wf-styles">
+/* ── WF 凡例バー ── */
+#wf-legend {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99999;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+}
+#wf-legend .wf-legend-title { font-weight: bold; color: #ffd; margin-right: 4px; }
+#wf-legend .wf-legend-item { display: flex; align-items: center; gap: 5px; }
+#wf-legend .wf-dot {
+  width: 12px; height: 12px; border-radius: 2px; display: inline-block; flex-shrink: 0;
+}
+.dot-add  { background: #d48f00; }
+.dot-nl   { background: #1a6fb5; }
+body { padding-top: 36px; }
+
+/* ── 追加セクション（オレンジ枠） ── */
+.wf-add {
+  position: relative;
+  border: 2px dashed #d48f00 !important;
+  border-radius: 4px;
+  background: rgba(255, 248, 215, 0.45);
+  margin: 20px 0 !important;
+  padding-top: 6px !important;
+}
+.wf-add::before {
+  content: '＋ 追加セクション';
+  position: absolute;
+  top: -11px;
+  left: 12px;
+  background: #d48f00;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ── 共通追加・メルマガ（ブルー枠） ── */
+.wf-add-nl {
+  position: relative;
+  border: 2px dashed #1a6fb5 !important;
+  border-radius: 4px;
+  background: rgba(214, 237, 255, 0.35);
+  padding-top: 6px;
+}
+.wf-add-nl::before {
+  content: '＋ 共通追加（メルマガ購読セクション）';
+  position: absolute;
+  top: -11px;
+  left: 12px;
+  background: #1a6fb5;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ── WF 新規ボタン ── */
+.wf-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #0033ff;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 4px;
+}
+.wf-btn-sub {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #fff;
+  color: #0033ff !important;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 2px solid #0033ff;
+  margin: 4px;
+}
+
+/* ── 対象企業グリッド ── */
+.wf-target-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.wf-target-card {
+  background: #fff;
+  border: 1px solid #dde4f0;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.wf-target-card strong {
+  display: block;
+  color: #003399;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* ── 課題リスト ── */
+.wf-issue-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.wf-issue-list li {
+  background: #fff;
+  border-left: 4px solid #d48f00;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── 選ばれる理由サマリーボックス ── */
+.wf-reason-box {
+  background: #f0f4ff;
+  border: 1px solid #b3c2e8;
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 16px 0;
+}
+.wf-reason-box h4 {
+  color: #003399;
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+.wf-reason-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.wf-reason-item {
+  background: #fff;
+  border-radius: 5px;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid #dde4f0;
+}
+.wf-reason-item .wf-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.wf-reason-item strong {
+  display: block;
+  color: #003399;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* ── 成果物ボックス ── */
+.wf-deliverable-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+.wf-deliverable-card {
+  background: #fff;
+  border: 1px solid #dde4f0;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+}
+.wf-deliverable-card .wf-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.wf-deliverable-card strong {
+  display: block;
+  color: #003399;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* ── 中間CTA ── */
+.wf-mid-cta {
+  background: linear-gradient(135deg, #003399 0%, #0055cc 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 24px 28px;
+  text-align: center;
+  margin: 0;
+}
+.wf-mid-cta p { margin: 8px 0; font-size: 14px; color: rgba(255,255,255,0.9); }
+.wf-mid-cta strong { font-size: 18px; display: block; margin-bottom: 10px; }
+.wf-mid-cta .wf-btn { background: #ff6600; border: none; font-size: 15px; padding: 14px 32px; }
+
+/* ── 事例リンク強化 ── */
+.wf-case-row {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0;
+  flex-wrap: wrap;
+}
+.wf-case-card {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #dde4f0;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 12px;
+}
+.wf-case-card .wf-label {
+  display: inline-block;
+  background: #003399;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+.wf-case-card p { margin: 4px 0; color: #333; }
+
+/* ── 価格補足ボックス ── */
+.wf-price-note {
+  background: #fffbf0;
+  border: 1px solid #f0d98a;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+.wf-price-note ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.wf-price-note li { margin-bottom: 4px; }
+
+/* ── メルマガセクション ── */
+.wf-nl-section {
+  background: #f0f6ff;
+  padding: 48px 0;
+}
+.wf-nl-section .wf-nl-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 16px;
+}
+.wf-nl-section h3 {
+  color: #003399;
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+.wf-nl-section .wf-nl-sub {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.wf-nl-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 0 0 24px;
+  text-align: left;
+}
+.wf-nl-benefit {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #c8dbf0;
+  font-size: 12px;
+}
+.wf-nl-benefit .wf-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+.wf-nl-benefit strong { display: block; color: #003399; font-size: 13px; margin-bottom: 4px; }
+.wf-nl-cta-btn {
+  display: inline-block;
+  background: #003399;
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 6px;
+}
+.wf-nl-note { font-size: 11px; color: #888; margin-top: 10px; }
+
+/* ── FAQ（システム化計画と共通デザイン） ── */
+.wf-faq { margin: 4px; }
+.wf-faq-item { margin-bottom: 10px; }
+.wf-faq-q {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+  padding: 10px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  color: #222;
+  border-radius: 4px 4px 0 0;
+}
+.wf-faq-q::before { content: 'Q.  '; color: #0033ff; }
+.wf-faq-a {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  border-radius: 0 0 4px 4px;
+}
+.wf-faq-a::before { content: 'A.  '; color: #888; font-weight: bold; }
+
+/* セクション区切り */
+.wf-section-divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 28px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- =====================================================
+     WF 凡例バー（固定）
+     ===================================================== -->
+<div id="wf-legend">
+  <span class="wf-legend-title">【WF】DXコンサルティングページ 改修案</span>
+  <span class="wf-legend-item"><span class="wf-dot dot-add"></span>オレンジ枠：追加セクション</span>
+  <span class="wf-legend-item"><span class="wf-dot dot-nl"></span>ブルー枠：共通追加（メルマガ）</span>
+  <span class="wf-legend-item" style="color:#aaa;">枠なし：既存コンテンツ（構成・内容変更あり）</span>
+</div>
+
+<!-- =====================================================
+     ヘッダー（既存）
+     ===================================================== -->
+<header>
+  <div class="head_h1container">
+    <div class="container">
+      <div class="d-lg-flex">
+        <h1>DXコンサルティングで業務効率化と事業の成長を支援</h1>
+        <p class="head_access"><a href="tel:0335137830"><i class="fa fa-phone fa-fw" aria-hidden="true"></i>TEL:03-3513-7830</a>|<a href="https://www.asckk.co.jp/contactus/"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>お問い合わせ</a></p>
+      </div>
+    </div>
+  </div>
+  <div id="top-header" class="">
+    <div id="main-header">
+      <div class="container">
+        <div class="row">
+          <div class="site-branding main-logo col col-lg-2 col-xl-auto d-flex align-items-center">
+            <a href="https://www.asckk.co.jp/" class="d-flex align-items-center">
+              <img class="img-fluid" src="./DXコンサルティングページ_files/title01.gif" alt="ITコンサルティングなら信頼と実績の【ASC】" loading="lazy" width="237" height="36">
+              <span class="serif" style="margin:0 0 0 0.5em;font-size:0.8em;letter-spacing:0;">創業30年の実績</span>
+            </a>
+          </div>
+          <nav id="site-navigation" class="main-navigation col-lg-9 col-xl-auto ms-auto">
+            <div class="menu">
+              <ul id="menu-main-menu">
+                <li class="menu-item"><a href="https://www.asckk.co.jp/aboutus/">ASC概要</a></li>
+                <li class="menu-item"><a href="https://www.asckk.co.jp/services/">サービスのご案内</a></li>
+                <li class="menu-item"><a href="https://www.asckk.co.jp/testimonial/">コンサルタント紹介</a></li>
+                <li class="menu-item"><a href="https://www.asckk.co.jp/column/">コラム</a></li>
+                <li class="menu-item"><a href="https://www.asckk.co.jp/casestudy/">コンサルティング事例</a></li>
+                <li class="menu-item"><a href="https://www.asckk.co.jp/recruitlp/">採用情報</a></li>
+                <li class="menu-item" style="background-color: #0033ff;"><a href="https://www.asckk.co.jp/contactus/" style="color: #fff; font-weight: 800;">お問い合わせ</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="page_header_wrap">
+  <div class="container">
+    <header class="entry-header">
+      <h2 class="entry-title">DXコンサルティング</h2>
+      <div id="breadcrumb" class="cf">
+        <div><a href="https://www.asckk.co.jp/">ホーム</a> / </div>
+        <div><a href="https://www.asckk.co.jp/services/">ITコンサルティングサービス</a> / </div>
+        <div><span>DXコンサルティングで業務効率化と事業の成長を支援</span></div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <!-- ─────────────────────────────────────
+         メインコンテンツ列
+         ───────────────────────────────────── -->
+    <div id="primary" class="content-area col-md-9 order-md-0 single-content">
+
+      <!-- ── リード文（既存） ── -->
+      <p>当社は中堅中小企業様のDX（デジタル・トランスフォーメーション）の検討・推進に貢献いたします。</p>
+
+      <!-- ══════════════════════════════════════
+           [追加] ① 対象企業・相談テーマ・FV CTA
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <h3 class="wp-block-heading" style="margin: 16px 16px 12px;">このような企業様におすすめです</h3>
+        <p style="font-size:13px; color:#555; margin-bottom:14px;">当てはまる状況があれば、ASCのDXコンサルティングがお役に立てます。</p>
+        <div class="wf-target-grid">
+          <div class="wf-target-card">
+            <strong>DX推進の指示は出たが、どう進めれば？</strong>
+            経営層から「DXに取り組め」と言われたが、何から手をつければいいかわからない
+          </div>
+          <div class="wf-target-card">
+            <strong>IT人材がいない・専任担当者がいない</strong>
+            DXを推進したいが社内にIT知識を持った人材がおらず、議論が進まない
+          </div>
+          <div class="wf-target-card">
+            <strong>既存システムが老朽化していて手が出せない</strong>
+            2025年の崖が迫っているが、どこから手をつければいいか判断できない
+          </div>
+          <div class="wf-target-card">
+            <strong>中立な立場でアドバイスしてほしい</strong>
+            ベンダーや代理店に相談すると商品を売り込まれる。公正な助言が欲しい
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:16px;">
+          <a href="https://www.asckk.co.jp/contactus/services?sid=dx" class="wf-btn">無料でご相談はこちら</a>
+          <a href="#dx-about" class="wf-btn-sub">DXコンサルティングとは</a>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           [追加] ② よくある課題
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <h3 class="wp-block-heading" style="margin: 16px 16px 12px;">DX推進でよくある課題</h3>
+        <p style="font-size:13px; color:#555; margin-bottom:14px;">DXへの取り組みが必要と認識されていても、以下のような状況で足踏みしているケースが多くあります。</p>
+        <ul class="wf-issue-list">
+          <li>DX以外の業務も抱えており、DXに取り組む時間が確保できない</li>
+          <li>IT知識を持った人財がいないため、社内議論が活性化しない</li>
+          <li>DXの企画・推進をしたいが、どのように進めるのか分からない</li>
+          <li>特定IT分野に強い人財はいるが、広い視野・幅広い知識でDXに取り組むのが難しい</li>
+          <li>レガシーシステムが複雑化・ブラックボックス化しており、何から手を付ければよいか判断できない</li>
+        </ul>
+        <p style="font-size:13px; color:#333;">ASCのDXコンサルティングサービスをご活用いただくことで、こういった状況の解消が可能です。</p>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           [追加] ③ 選ばれる理由・要約ボックス
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <div class="wf-reason-box">
+          <h4>ASCが選ばれる3つの理由（要約）</h4>
+          <div class="wf-reason-items">
+            <div class="wf-reason-item">
+              <div class="wf-icon">🏢</div>
+              <strong>独立系・非開発</strong>
+              特定ベンダーとの資本関係なし。ソフトウェア・ハード開発は行わず、純粋なコンサルティングに専念
+            </div>
+            <div class="wf-reason-item">
+              <div class="wf-icon">⚖️</div>
+              <strong>公正中立</strong>
+              第三者の立場から業界動向・製品・サービスを評価。お客様利益を最優先した提言
+            </div>
+            <div class="wf-reason-item">
+              <div class="wf-icon">💰</div>
+              <strong>大手の1/2〜1/3の費用</strong>
+              中堅中小企業向けに最適化されたコスト体系。高い専門性をリーズナブルに提供
+            </div>
+          </div>
+          <p style="text-align:center; margin:14px 0 0; font-size:12px; color:#555;">▼ 詳しい選ばれる理由はページ下部でご紹介しています</p>
+        </div>
+      </section>
+
+      <hr class="wf-section-divider">
+
+      <!-- ── DXとは（既存） ── -->
+      <div id="dx-about">
+        <h3>DX とは</h3>
+        <p>DX（デジタル・トランスフォーメーション） は、2004年にスウェーデンのエリック・ストルターマン氏（ウメオ大学教授）によって提唱された概念であり、「進化し続けるテクノロジーが人々の生活を豊かにしていく」というものです。</p>
+        <p>日本においては、2018年9月に経済産業省（以下、経産省）から「DXレポート」という報告書が発表されました。副題は「ITシステム『2025年の崖』の克服とDXの本格的な展開」とあります。</p>
+        <p>「DXレポート」によると、『2025年の崖』とは、既存システムの分断や複雑化・ブラックボックス化により、DX（デジタル・トランスフォーメーション）が実現できず、2025年以降に最大12兆円／年（現在の約３倍）の経済損失が生じる可能性と説明されています。</p>
+        <p>東京都の予算規模が約15兆円ですから、その経済損失の影響は、極めて大きいといえます。</p>
+      </div>
+
+      <!-- ── DXに取り組まないと（既存） ── -->
+      <h3>DX に取り組まないと何が起こるのか？</h3>
+      <p>弊社の主なクライアント層である中堅中小企業において、DX に取り組まないと何が起こるのでしょうか？<br>企業ごとにタイミングは異なるものの、DXに取り組まずに『2025年の崖』を迎えてしまうと以下のようなことに直面するリスクがあります。</p>
+      <p>＜中堅中小企業における『2025年の崖』を迎えた際のイメージ＞</p>
+      <ul>
+        <li>ビジネス、業務におけるIT・システムの重要度が高まる一方にも関わらず、IT・システムを担当する部門および担当者がおらず、IT・システムの活用が進まない。結果として、大企業や同規模の競合企業に大きな差を付けられる。</li>
+        <li>ようやくデータ分析・活用の重要さに気がついたものの、データは蓄積されていない、データ分析ができる人材がいない状況で、競合に大きな差を付けられる。</li>
+        <li>情報漏えいやシステムトラブルなどへの対策を放置してきた結果、事故の発生を機に取引先からの信用を失う。</li>
+      </ul>
+
+      <!-- ── DXコンサルティング概要（既存 = 導入のメリットを改題） ── -->
+      <h3>DXコンサルティングでできること</h3>
+      <p>DX への取り組みが必要だと認識されていても、時間・人材・知識が不足していてなかなか前に進めないというお話を耳にします。</p>
+      <p>弊社のDXコンサルティングサービスをご活用いただくことで、こういった状況の解消が可能です。</p>
+      <ul>
+        <li>DXの現状診断と優先課題の特定</li>
+        <li>ビジョン策定（Will Beモデル®）と中長期ロードマップの作成</li>
+        <li>DX推進のプロジェクトマネジメント支援</li>
+        <li>システム・ツール選定の支援（中立立場）</li>
+        <li>社内体制・人材育成の提言</li>
+      </ul>
+      <p>実際にご支援いたします際には、お客様のご希望や要件を伺い、最適な方法・手順をご提案いたします。</p>
+
+      <!-- ══════════════════════════════════════
+           [追加] ④ 成果物・得られるもの
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <h3 class="wp-block-heading" style="margin: 16px 16px 12px;">コンサルティングで得られるもの</h3>
+        <p style="font-size:13px; color:#555; margin-bottom:14px;">ASCのDXコンサルティングを通じて、以下の成果物・アウトプットをご提供します。</p>
+        <div class="wf-deliverable-grid">
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">📊</div>
+            <strong>DX現状診断レポート</strong>
+            貴社のDX成熟度と優先取り組み領域を可視化
+          </div>
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">🗺️</div>
+            <strong>DXロードマップ</strong>
+            短期・中長期の取り組み計画と優先順位の整理
+          </div>
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">🏗️</div>
+            <strong>推進体制・役割定義</strong>
+            社内推進チームの体制と役割分担の提言
+          </div>
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">⚙️</div>
+            <strong>システム・ツール比較表</strong>
+            候補ツールの中立評価と選定基準の整理
+          </div>
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">📋</div>
+            <strong>プロジェクト計画書</strong>
+            具体的な実行スケジュールとマイルストーン
+          </div>
+          <div class="wf-deliverable-card">
+            <div class="wf-icon">📝</div>
+            <strong>経営報告資料</strong>
+            取締役会・経営会議向けの報告ドキュメント
+          </div>
+        </div>
+        <p style="font-size:12px; color:#666; margin:8px 0 0;">※成果物の内容・範囲はお客様の状況・ご要件により異なります。</p>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           [追加] ⑤ 中間CTA
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 4px;">
+        <div class="wf-mid-cta">
+          <strong>DX推進の最初の一歩、まずはご相談ください</strong>
+          <p>「何から始めればいいかわからない」「社内リソースが不足している」<br>そんなお悩みも、初回相談でお気軽にお聞かせください。</p>
+          <a href="https://www.asckk.co.jp/contactus/services?sid=dx" class="wf-btn">無料相談・お問い合わせ</a>
+          <p style="font-size:11px; color:rgba(255,255,255,0.7); margin-top:8px;">TEL: 03-3513-7830（平日9:00〜18:00）</p>
+        </div>
+      </section>
+
+      <hr class="wf-section-divider">
+
+      <!-- ── ASCが選ばれる理由（既存） ── -->
+      <h3>ASCが選ばれる理由</h3>
+      <p>弊社は、DX の企画・推進に必要な知識と経験を備えており、コストパフォーマンスが優れているという特長があります。</p>
+      <p>DX の企画・推進においては、以下の知識や経験、素養が求められます。</p>
+      <ul>
+        <li>経営戦略を理解できるだけの業界、業務知識</li>
+        <li>情報技術全般にわたる専門知識とシステムの導入や開発、運用などの経験</li>
+        <li>特定の製品やサービスに縛られない中立性</li>
+      </ul>
+      <p>弊社は、独立系のITシステムコンサルティング会社です。</p>
+      <p>製造業、販売業、情報通信業、サービス業、学校、病院など、様々な業界でのご支援を経験してまいりました。数多くのお客様へのご支援を通じて、幅広い業界経験を培ってまいりました。</p>
+      <p>また弊社では、IT分野を専門としたコンサルティングサービスを提供しております。情報システムのライフサイクルに沿って様々なサービスをご提供しており、ITに関する広い知識と経験を有しております。</p>
+      <p>そして弊社は、特定の会社との利害関係（資本関係等）はございません。特定の製品やサービスに限定せず、第三者的な立場から、業界動向や製品、サービスを調査し評価できます。コンサルティング会社本来の、公正中立な立場で、お客様をご支援いたします。</p>
+      <p>これらが、弊社がお客様に選んでいただける理由です。</p>
+
+      <!-- ══════════════════════════════════════
+           [追加] ⑥ 事例リンク強化
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <h3 class="wp-block-heading" style="margin: 16px 16px 12px;">コンサルティング事例</h3>
+        <p style="font-size:13px; color:#555; margin-bottom:14px;">実際にASCのDXコンサルティングをご活用いただいたお客様の事例をご紹介します。<br><small style="color:#888;">※事例の掲載はASC確認・承認後に反映予定</small></p>
+        <div class="wf-case-row">
+          <div class="wf-case-card">
+            <span class="wf-label">製造業</span>
+            <p><strong>生産管理のDX化によりデータ活用を実現</strong></p>
+            <p>老朽化した基幹システムのリプレースに合わせ、DXロードマップを策定。段階的な推進を支援。</p>
+          </div>
+          <div class="wf-case-card">
+            <span class="wf-label">サービス業</span>
+            <p><strong>業務効率化とデータ基盤整備を両立</strong></p>
+            <p>IT専任者不在の状況で、外部コンサルとして体制構築から推進まで一貫してサポート。</p>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:12px;">
+          <a href="https://www.asckk.co.jp/casestudy/" class="wf-btn-sub">コンサルティング事例を見る →</a>
+        </p>
+      </section>
+
+      <hr class="wf-section-divider">
+
+      <!-- ── 価格（既存 = FAQ費用情報をセクション化） ── -->
+      <!-- ※WF注記: 現在FAQの費用Q&Aに記載されている情報を独立セクションとして再構成 -->
+      <h3>費用・期間の目安</h3>
+      <p>案件の規模・対象範囲によって異なりますが、以下を目安としております。</p>
+      <ul>
+        <li><strong>期間：</strong>2〜6ヶ月程度で施策をまとめることが多いです（実行支援を伴う場合は長期になることがあります）</li>
+        <li><strong>費用：</strong>事業規模や対象範囲にもよりますが、1ヶ月あたり数十万円〜200万円以内でのご支援が多いです</li>
+      </ul>
+      <p>大手コンサルティングファームと比較して、1/2〜1/3程度の費用でご支援できるケースも多くあります。</p>
+
+      <!-- ══════════════════════════════════════
+           [追加] ⑦ 価格補足
+           ══════════════════════════════════════ -->
+      <section class="wf-add" style="padding: 20px 20px 20px;">
+        <div class="wf-price-note">
+          <strong style="font-size:14px; color:#003399;">💡 費用に関するよくある不安</strong>
+          <ul>
+            <li>「まずは課題整理だけでも相談できますか？」→ 初回ヒアリングは無料で承っております。</li>
+            <li>「予算が限られているが対応可能？」→ 支援範囲を調整してスモールスタートも可能です。</li>
+            <li>「途中で範囲が拡大した場合は？」→ 都度合意の上で進めますので安心してご相談ください。</li>
+          </ul>
+        </div>
+        <p style="text-align:center; margin-top:12px;">
+          <a href="https://www.asckk.co.jp/contactus/services?sid=dx" class="wf-btn">費用について相談する</a>
+        </p>
+      </section>
+
+      <hr class="wf-section-divider">
+
+      <!-- ── DXコンサルティングの進め方（既存・移動） ── -->
+      <!-- ※WF注記: 現在はページ上部にあるが、費用の後に移動 -->
+      <h3>DXコンサルティングの進め方（例）</h3>
+      <p>DXコンサルティングは、各社の状況・体制等により、進め方が大きく異なります。<br>一例として、以下のような進め方がございます。</p>
+      <div><img decoding="async" class="aligncenter" style="width: 277px; height: 306;" title="コンサルティングの進め方" src="./DXコンサルティングページ_files/dx-process.png" alt="コンサルティングの進め方"></div>
+      <h4>ビジョン策定</h4>
+      <p>経営者が社員に対して「DXに取り組むように」と号令をかけるだけでは、DX は成功しません。企業のビジョン・目標があり、それに向かってDXに取り組む必要があります。</p>
+      <p>貴社のビジョン・目標に何をおくのか？DX を推進することで実現可能なビジョン・目標は何なのか？<br>そして、貴社がありたい姿・目指したい姿（Will Be モデル）についても、貴社と一丸となって定義していきます。</p>
+      <h4>管理</h4>
+      <p>DX を推進していくなかで、人・物・カネ・情報の管理が重要です。</p>
+      <p>DX の取り組みにおいては、<br>計画（Plan）　→　推進（Do）　→　評価（See）<br>を短い期間で繰り返します。また、同時並行でいくつもの施策を推進します。<br>高度なプロジェクトマネジメントが必要になることが多いといえます。</p>
+      <p>弊社は貴社のプロジェクトチームの一員として、プロジェクトマネジメントの支援をいたします。</p>
+      <h4>計画（Plan）</h4>
+      <p>貴社ビジネス担当者の方々と共に、企画・計画をおこないます。<br>ここでは、ビジョン策定フェーズで策定した貴社がありたい姿・目指したい姿（Will Be モデル）を具体化し、その実現計画を策定していきます。</p>
+      <h4>推進（Do）</h4>
+      <p>策定した計画に基づき、ありたい姿（Will Be モデル）を実現していきます。</p>
+      <h4>評価（See）</h4>
+      <p>計画に基づいてありたい姿（Will Be モデル）が実現した後は、その評価をおこないます。<br>現状の評価をしっかりとすることで、次の計画（Plan）・推進（Do）に活かします。</p>
+      <p>上記の作業手順は、標準的なひとつの例です。実際にご支援いたします際には、お客様のご希望や要件を伺い、お客様にとって最適な方法、手順をご提案いたします。</p>
+      <p>Will Beモデル®は、青山システムコンサルティング株式会社の登録商標です。(商標登録 第6272163号 )</p>
+
+      <!-- ── よくある質問（既存・デザイン更新） ── -->
+      <div class="faq_contents">
+        <h3 class="wp-block-heading" style="margin: 16px 16px 12px;">よくある質問</h3>
+        <div class="wf-faq">
+          <div class="wf-faq-item">
+            <div class="wf-faq-q">社長からDXに取り組むように指示がありました。支援をお願いできますか？</div>
+            <div class="wf-faq-a">支援は可能ですが、社長（または担当役員）も一緒に取り組んでいただく必要があります。</div>
+          </div>
+          <div class="wf-faq-item">
+            <div class="wf-faq-q">DXコンサルティングは、どの程度の期間で対応できますか？</div>
+            <div class="wf-faq-a">案件にもよりますが、2〜6ヶ月程度で施策をまとめることが多いです。その後、改革や改善の実行支援をする場合は、長期の支援になることが多いです。</div>
+          </div>
+          <div class="wf-faq-item">
+            <div class="wf-faq-q">IT人材が社内にいませんが、支援を受けられますか？</div>
+            <div class="wf-faq-a">はい、対応可能です。IT人材不在の企業様へのご支援実績が豊富にございます。ビジネス担当者の方と一緒に議論を進めながら、分かりやすくご支援いたします。</div>
+          </div>
+          <div class="wf-faq-item">
+            <div class="wf-faq-q">どのタイミングでご相談すればよいですか？</div>
+            <div class="wf-faq-a">DXに取り組みたいと考え始めた段階からご相談いただけます。具体的な計画がなくても、現状の課題整理からお手伝いします。</div>
+          </div>
+        </div>
+        <ul id="services-btn" class="block">
+          <li id="sfaq-btn" class="large-5 columns"><a title="ITコンサルティングFAQ" href="https://www.asckk.co.jp/faqs">ITコンサルティングFAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- ── 関連するコンサルタントコラム（既存） ── -->
+      <h3 class="h3note">関連するコンサルタントコラム</h3>
+      <ul>
+        <li><a href="https://www.asckk.co.jp/archives/column/32201">中堅中小企業はITシステム『2025年の崖』とどのように向き合うべきか</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/512003">DX推進のフレームワーク？情報処理促進法・デジタルガバナンスコードとは</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/512104">「DXはデジタル化ではない」のミスリード</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/210132">DX税制の適用をきっかけに健全なDX推進を！</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/210450">DX（デジタル・トランスフォーメーション）と向き合うために中堅中小企業がはじめに取り組むべきこととは</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/210241">ベンダーへの要求、伝えられていますか？</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/572110">DXに必要なIT企画人材の自社育成の最初の一歩</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/20220565">内製化　ユーザー企業が考えるべきポイント</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/20220641">DX時代のシステムコンサルティング</a></li>
+        <li><a href="https://www.asckk.co.jp/archives/column/20230461">DXは「視座の変化」である</a></li>
+      </ul>
+
+      <!-- ── 既存CTA ── -->
+      <ul id="services-btn" class="block">
+        <li id="services-btn01" class="large-5 columns"><a title="サービス・業務についてのお問い合わせ" href="https://www.asckk.co.jp/contactus/services?sid=dx">お問い合わせ</a></li>
+      </ul>
+
+    </div><!-- /#primary -->
+
+    <!-- ─────────────────────────────────────
+         サイドバー（既存）
+         ───────────────────────────────────── -->
+    <div id="secondary" class="sidebar-area col-md-3 order-md-1">
+      <div class="widget-area left-sidebar sidebar stickymenuarea">
+        <aside id="nav_menu-services" class="widget widget_nav_menu">
+          <h4 class="widget-title">ITコンサルティングサービス</h4>
+          <div class="menu-services-container">
+            <ul id="menu-services" class="menu">
+              <li><a href="https://www.asckk.co.jp/services">業務のご案内（サービスライン）</a></li>
+              <li><a href="https://www.asckk.co.jp/contactus/" class="menu_else">サービスについてのお問い合わせ</a></li>
+            </ul>
+          </div>
+          <div style="margin: 1.5em 0;">
+            <img src="./DXコンサルティングページ_files/minMap.png" alt="ASCはIT・システムのライフサイクルを軸に、５つのサービスを提供します。" usemap="#minMap">
+            <map name="minMap">
+              <area shape="circle" coords="240,132,50" href="https://www.asckk.co.jp/services/sysplan/">
+              <area shape="circle" coords="150,65,50" href="https://www.asckk.co.jp/services/sysrev/">
+              <area shape="circle" coords="60,132,50" href="https://www.asckk.co.jp/services/sysadv/">
+              <area shape="circle" coords="95,238,50" href="https://www.asckk.co.jp/services/sysmng/">
+              <area shape="circle" coords="205,238,50" href="https://www.asckk.co.jp/services/itvend/">
+              <area shape="circle" coords="150,160,40" href="https://www.asckk.co.jp/services/">
+            </map>
+          </div>
+          <div>
+            <ul class="menu">
+              <li><a href="https://www.asckk.co.jp/services/purpose">業務のご案内（目的から探す）</a></li>
+            </ul>
+          </div>
+          <nav class="nav_menu-banner">
+            <a href="https://www.asckk.co.jp/contactus"><img src="./DXコンサルティングページ_files/column_sidebar_contact.webp"></a>
+          </nav>
+        </aside>
+      </div>
+    </div><!-- /#secondary -->
+
+  </div><!-- .row -->
+</div><!-- .container -->
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     フッターCTA（既存）
+     ═══════════════════════════════════════════════ -->
+<section id="footer_cta">
+  <div class="container">
+    <div class="top_cta">
+      <p class="top_cta_title">まずはお気軽に<br class="pc_hide">お問い合わせください</p>
+      <div class="top_cta_point">
+        <p>新しくシステムを導入したいが、進め方がわからない。</p>
+        <p>いま頼んでいるベンダーに不満がある。</p>
+        <p>DXに取り組みたいが、どうすればいいのか…</p>
+        <p>システムは揃っているがうまく使いこなせていない気がする</p>
+      </div>
+      <div class="top_cta_menu">
+        <div class="top_cta_menu_item">
+          <p class="top_cta_menu_title"><img src="./DXコンサルティングページ_files/icon_cta_tel.svg">お電話でのお問い合わせ</p>
+          <p class="top_cta_menu_tel"><a href="tel:0335137830">TEL：<span>03-3513-7830</span></a></p>
+        </div>
+        <hr>
+        <div class="top_cta_menu_item">
+          <p class="top_cta_menu_title"><img src="./DXコンサルティングページ_files/icon_cta_mail.svg">メールでのお問い合わせ</p>
+          <p class="top_cta_menu_mail"><a href="https://www.asckk.co.jp/contactus/" class="bn_link">お問い合わせフォーム</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     [共通追加] メルマガ購読セクション
+     ═══════════════════════════════════════════════ -->
+<div class="wf-add-nl" style="padding-top:2px;">
+  <section class="wf-nl-section">
+    <div class="wf-nl-inner">
+      <h3>DX・IT活用の最新情報をメールでお届け</h3>
+      <p class="wf-nl-sub">業務改善・DX・システム化計画など、中堅中小企業のIT担当者に役立つ情報を定期配信しています。</p>
+      <div class="wf-nl-benefits">
+        <div class="wf-nl-benefit">
+          <span class="wf-icon">📰</span>
+          <strong>実務直結のテーマ</strong>
+          DX推進・業務改善・システム化計画・ITベンダー選定など、現場で使える情報を厳選してお届け
+        </div>
+        <div class="wf-nl-benefit">
+          <span class="wf-icon">⚖️</span>
+          <strong>ベンダー中立の情報</strong>
+          特定製品・ベンダーに偏らない、独立系コンサルタントの公正な視点からの情報提供
+        </div>
+        <div class="wf-nl-benefit">
+          <span class="wf-icon">🎁</span>
+          <strong>完全無料・いつでも解除可</strong>
+          購読料は一切かかりません。ご不要な場合はいつでもワンクリックで解除できます
+        </div>
+      </div>
+      <a href="https://www.beerfroth.com/std/do/ordermail?idstr_user=dgekf5yl" class="wf-nl-cta-btn" target="_blank" rel="noopener">
+        無料メールマガジンに登録する →
+      </a>
+      <p class="wf-nl-note">登録フォームへ遷移します。個人情報は適切に管理いたします。</p>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     フッター（既存）
+     ═══════════════════════════════════════════════ -->
+<footer id="colophon">
+  <a href="#" class="g-backtotop-link"><div id="g-backtotop"><span id="g-backtotop-text">トップへ戻る</span></div></a>
+  <div id="middle-footer" class="footer-menu">
+    <div class="container">
+      <nav class="row">
+        <div class="itemf col-md-4 col-lg-2">
+          <h4><a href="https://www.asckk.co.jp/aboutus"><span>ASCについて</span></a></h4>
+          <ul class="items">
+            <li><a href="https://www.asckk.co.jp/aboutus">経営方針</a></li>
+            <li><a href="https://www.asckk.co.jp/aboutus/profile">会社概要</a></li>
+            <li><a href="https://www.asckk.co.jp/aboutus/cppresi">代表挨拶</a></li>
+            <li><a href="https://www.asckk.co.jp/aboutus/asc-history">沿革</a></li>
+            <li><a href="https://www.asckk.co.jp/aboutus/map">アクセス</a></li>
+          </ul>
+          <h4 style="margin-top: 1.5em;"><a href="https://www.asckk.co.jp/testimonial"><span>コンサルタントの紹介</span></a></h4>
+          <ul class="items"><li><a href="https://www.asckk.co.jp/testimonial">メンバー一覧</a></li></ul>
+          <h4 style="margin-top: 1.5em;"><a href="https://www.asckk.co.jp/column"><span>コラム</span></a></h4>
+          <ul class="items"><li><a href="https://www.asckk.co.jp/column">ITコンサルタントコラム</a></li></ul>
+        </div>
+        <div class="itemf col-md-8 col-lg-4">
+          <h4><a href="https://www.asckk.co.jp/services"><span>ITコンサルティングサービス</span></a></h4>
+          <ul class="items">
+            <li><a href="https://www.asckk.co.jp/services/sysrev">ITシステム診断・評価コンサルティング</a></li>
+            <li><a href="https://www.asckk.co.jp/services/sysplan">ITシステム化計画コンサルティング</a></li>
+            <li><a href="https://www.asckk.co.jp/services/itvend">ITベンダー 評価・選定サービス</a></li>
+            <li><a href="https://www.asckk.co.jp/services/sysmng">プロジェクトマネジメント</a></li>
+            <li><a href="https://www.asckk.co.jp/services/sysadv">IT顧問・ITシステムアドバイザリーサービス</a></li>
+            <li style="margin-top: 0.5em;"><a href="https://www.asckk.co.jp/services/dx">DXコンサルティング</a></li>
+            <li><a href="https://www.asckk.co.jp/services/bpr">業務改革・業務改善コンサルティング</a></li>
+            <li style="margin-top: 0.5em;"><a href="https://www.asckk.co.jp/services">その他のサービス</a></li>
+          </ul>
+        </div>
+        <div class="itemf col-md-4 col-lg-3">
+          <h4><a href="https://www.asckk.co.jp/casestudy"><span>コンサルティング事例</span></a></h4>
+          <ul class="items">
+            <li><a href="https://www.asckk.co.jp/archives/industrytype/indust01">流通・小売業</a></li>
+            <li><a href="https://www.asckk.co.jp/archives/industrytype/indust02">製造業</a></li>
+            <li><a href="https://www.asckk.co.jp/archives/industrytype/indust03">サービス業</a></li>
+            <li><a href="https://www.asckk.co.jp/archives/industrytype/indust10">その他の業種</a></li>
+          </ul>
+          <h4 style="margin-top: 1.5em;"><a href="https://www.asckk.co.jp/faqs"><span>FAQ</span></a></h4>
+          <ul class="items"><li><a href="https://www.asckk.co.jp/faqs">ITコンサルティングFAQ</a></li></ul>
+        </div>
+        <div class="itemf col-md-4 col-lg-3">
+          <h4><a href="https://www.asckk.co.jp/recruitlp"><span>キャリア採用サイト</span></a></h4>
+          <ul class="items">
+            <li><a href="https://www.asckk.co.jp/recruitlp/corporate-philosophy">私たちのこと</a></li>
+            <li><a href="https://www.asckk.co.jp/recruitlp/career-information">募集要項</a></li>
+            <li><a href="https://www.asckk.co.jp/recruitlp/entry">エントリー</a></li>
+          </ul>
+          <div style="text-align: center; margin-top: 1.5em;">
+            <img src="./DXコンサルティングページ_files/SGS_ISO-IEC_27001_with_ISMS-AC_TCL_LR.jpg" loading="lazy" alt="ISO27001" width="112" height="65">
+            <p style="color: #fff; font-size: .7em;">登録範囲： ITシステムコンサルティング</p>
+          </div>
+        </div>
+      </nav>
+      <ul class="row justify-content-center py-3">
+        <li class="col-auto"><a href="https://www.asckk.co.jp/">Home</a></li>
+        <li class="col-auto"><a href="https://www.asckk.co.jp/sitemap">サイトマップ</a></li>
+        <li class="col-auto"><a href="https://www.asckk.co.jp/privacy">個人情報保護方針</a></li>
+        <li class="col-auto"><a href="https://www.asckk.co.jp/contactus">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="bottom-footer">
+    <div class="copyright">Copyright © AOYAMA SYSTEMS CONSULTING INC. All rights reserved.</div>
+  </div>
+</footer>
+
+<nav id="cta_bottom" class="pc_hide scroll">
+  <a href="https://www.asckk.co.jp/contactus"><img src="./DXコンサルティングページ_files/sp_cta.webp"></a>
+</nav>
+
+</body></html>
