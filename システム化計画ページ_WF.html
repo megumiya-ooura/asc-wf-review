@@ -391,54 +391,13 @@ body { padding-top: 36px; }
 }
 .wf-cost-qa__cta {
   text-align: center;
-  margin: 22px 0 0;
+  margin: 24px 0 0;
 }
-.wf-cost-qa__contact {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 22px 0 0;
-}
-.wf-cost-qa__contact-card {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 18px 16px 16px;
-  text-align: center;
-}
-.wf-cost-qa__contact-label {
-  display: inline-block;
-  background: #0033ff;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 3px 10px;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-.wf-cost-qa__contact-tel {
-  display: block;
-  font-size: 22px;
-  font-weight: 700;
-  color: #0033ff;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  line-height: 1.2;
-  margin-bottom: 6px;
-}
-.wf-cost-qa__contact-hours,
-.wf-cost-qa__contact-note {
-  font-size: 11px;
-  color: #777;
-  margin: 0;
-  line-height: 1.6;
-}
-.wf-cost-qa__contact .wf-btn {
-  display: inline-block;
-  margin: 4px 0 8px;
-  font-size: 14px;
-  padding: 12px 28px;
+.wf-cost-qa__cta-note {
+  font-size: 12.5px;
+  color: #555;
+  margin: 0 0 12px;
+  line-height: 1.7;
 }
 @media (max-width: 780px) {
   .wf-cost-qa { padding: 18px 8px 14px; margin: 14px 8px; }
@@ -454,8 +413,6 @@ body { padding-top: 36px; }
     font-size: 13px;
   }
   .wf-cost-qa__badge { width: 28px; height: 28px; font-size: 10.5px; left: 12px; }
-  .wf-cost-qa__contact { grid-template-columns: 1fr; gap: 10px; }
-  .wf-cost-qa__contact-tel { font-size: 20px; }
 }
 
 /* ── FAQ ── */
@@ -839,17 +796,9 @@ body { padding-top: 36px; }
 
           </div>
 
-          <div class="wf-cost-qa__contact">
-            <div class="wf-cost-qa__contact-card">
-              <span class="wf-cost-qa__contact-label">お電話でのご相談</span>
-              <a class="wf-cost-qa__contact-tel" href="tel:0335137830">03-3513-7830</a>
-              <p class="wf-cost-qa__contact-hours">受付：平日 9:00〜18:00</p>
-            </div>
-            <div class="wf-cost-qa__contact-card">
-              <span class="wf-cost-qa__contact-label">フォームでのご相談</span>
-              <a class="wf-btn" href="https://www.asckk.co.jp/contactus/services?sid=sysplan">費用について相談する</a>
-              <p class="wf-cost-qa__contact-note">24時間受付・1営業日以内にご返信</p>
-            </div>
+          <div class="wf-cost-qa__cta">
+            <p class="wf-cost-qa__cta-note">ご相談・お見積もりは無料です。お気軽にお問い合わせください。</p>
+            <a class="wf-btn" href="https://www.asckk.co.jp/contactus/services?sid=sysplan">費用について相談する</a>
           </div>
         </section>
       </div>
