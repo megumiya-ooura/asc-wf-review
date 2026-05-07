@@ -300,101 +300,91 @@ body { padding-top: 36px; }
 .wf-price-note ul { margin: 8px 0 0; padding-left: 18px; }
 .wf-price-note li { margin-bottom: 4px; }
 
-/* ── 費用に関するよくある不安（Q&Aパネル） ── */
-.wf-cost-faq {
+/* ── ご相談に関する3つのお約束（3カラム） ── */
+.wf-cost-promise {
   background: #fffbf0;
   border: 1px solid #f0d98a;
   border-radius: 8px;
-  padding: 22px 24px 24px;
+  padding: 28px 28px 26px;
   margin: 16px;
 }
-.wf-cost-faq__title {
-  margin: 0 0 4px;
-  font-size: 16px;
+.wf-cost-promise__title {
+  margin: 0;
+  font-size: 17px;
   color: #7a5a00;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  position: relative;
-  padding-bottom: 10px;
+  letter-spacing: 0.06em;
+  text-align: center;
 }
-.wf-cost-faq__title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 28px;
-  height: 2px;
-  background: #d4a64a;
-}
-.wf-cost-faq__lead {
-  margin: 8px 0 16px;
+.wf-cost-promise__lead {
+  margin: 8px 0 22px;
   font-size: 12.5px;
   color: #8a6e2a;
+  text-align: center;
   line-height: 1.7;
 }
-.wf-cost-faq__list {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.wf-cost-promise__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
-.wf-cost-faq__item {
+.wf-cost-promise__card {
   background: #fff;
   border: 1px solid #efe1b8;
   border-radius: 6px;
-  padding: 12px 14px;
-}
-.wf-cost-faq__q,
-.wf-cost-faq__a {
-  margin: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.7;
-}
-.wf-cost-faq__q {
-  font-size: 13.5px;
-  color: #1F1F1F;
-  font-weight: 700;
-}
-.wf-cost-faq__a {
-  font-size: 13px;
-  color: #555;
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed #efe1b8;
-}
-.wf-cost-faq__label {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 3px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  margin-top: 1px;
-}
-.wf-cost-faq__label--q {
-  background: #003399;
-  color: #fff;
-}
-.wf-cost-faq__label--a {
-  background: #fff;
-  color: #6b6b6b;
-  border: 1px solid #c8c0a4;
-}
-.wf-cost-faq__cta {
+  padding: 24px 18px 22px;
   text-align: center;
-  margin: 18px 0 0;
+  position: relative;
+  transition: box-shadow .2s, transform .05s;
+  box-shadow: 0 1px 3px rgba(122, 90, 0, 0.05);
+}
+.wf-cost-promise__card:hover {
+  box-shadow: 0 6px 18px rgba(122, 90, 0, 0.12);
+  transform: translateY(-1px);
+}
+.wf-cost-promise__num {
+  display: block;
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #d4a64a;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.wf-cost-promise__num::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: #d4a64a;
+  margin: 8px auto 0;
+}
+.wf-cost-promise__catch {
+  font-size: 15px;
+  color: #003399;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+.wf-cost-promise__desc {
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+.wf-cost-promise__cta {
+  text-align: center;
+  margin: 22px 0 0;
 }
 @media (max-width: 780px) {
-  .wf-cost-faq { padding: 18px 16px 20px; margin: 14px 12px; }
-  .wf-cost-faq__item { padding: 12px; }
+  .wf-cost-promise { padding: 22px 16px 20px; margin: 14px 12px; }
+  .wf-cost-promise__grid { grid-template-columns: 1fr; gap: 10px; }
+  .wf-cost-promise__card { padding: 20px 16px 18px; }
+  .wf-cost-promise__num { font-size: 26px; }
+  .wf-cost-promise__catch { font-size: 14.5px; }
 }
 
 /* ── FAQ ── */
@@ -732,24 +722,27 @@ body { padding-top: 36px; }
            ⑪ 価格補足（追加）
            ───────────────────────────────────────── -->
       <div class="wf-add">
-        <section class="wf-cost-faq" aria-labelledby="wf-cost-faq-title">
-          <h4 class="wf-cost-faq__title" id="wf-cost-faq-title">費用に関するよくある不安</h4>
-          <p class="wf-cost-faq__lead">ご相談前に多くいただく質問にお答えしています。</p>
-          <dl class="wf-cost-faq__list">
-            <div class="wf-cost-faq__item">
-              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>まずは現状整理だけでも相談できますか？</span></dt>
-              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>初回のヒアリングは無料で承っております。</span></dd>
+        <section class="wf-cost-promise" aria-labelledby="wf-cost-promise-title">
+          <h4 class="wf-cost-promise__title" id="wf-cost-promise-title">ご相談に関する3つのお約束</h4>
+          <p class="wf-cost-promise__lead">費用面のご不安は、ご相談前に解消いただけます。</p>
+          <div class="wf-cost-promise__grid">
+            <div class="wf-cost-promise__card">
+              <span class="wf-cost-promise__num">01</span>
+              <p class="wf-cost-promise__catch">初回ヒアリングは無料</p>
+              <p class="wf-cost-promise__desc">現状整理だけでもお気軽にご相談いただけます。</p>
             </div>
-            <div class="wf-cost-faq__item">
-              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>対象範囲が広すぎて費用が心配です。</span></dt>
-              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>支援範囲を絞ってスモールスタートも可能です。</span></dd>
+            <div class="wf-cost-promise__card">
+              <span class="wf-cost-promise__num">02</span>
+              <p class="wf-cost-promise__catch">スモールスタートも可能</p>
+              <p class="wf-cost-promise__desc">支援範囲を絞ったご依頼にも柔軟に対応します。</p>
             </div>
-            <div class="wf-cost-faq__item">
-              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>途中で要件が変わった場合はどうなりますか？</span></dt>
-              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>都度合意の上で進めますので、安心してご相談ください。</span></dd>
+            <div class="wf-cost-promise__card">
+              <span class="wf-cost-promise__num">03</span>
+              <p class="wf-cost-promise__catch">都度合意のうえで進行</p>
+              <p class="wf-cost-promise__desc">途中で要件が変わってもご相談しながら進めます。</p>
             </div>
-          </dl>
-          <p class="wf-cost-faq__cta">
+          </div>
+          <p class="wf-cost-promise__cta">
             <a class="wf-btn" href="https://www.asckk.co.jp/contactus/services?sid=sysplan">費用について相談する</a>
           </p>
         </section>
