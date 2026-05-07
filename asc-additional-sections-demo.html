@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【デモ】ASC追加セクション 実装プレビュー</title>
+<style>
+/* =============================================================
+   ASC 追加セクション 実装スタイル（デモ用統合版）
+   - prefix: .asc-add-
+   - 既存サイト（asckk.co.jp）に組み込んだ際、既存CSS（body のフォント・色・行間）を継承する想定
+   - JavaScript / 外部ライブラリ非使用
+   - レスポンシブ：PC ≥1025 / タブレット 781〜1024 / SP ≤780（既存に合わせる）
+   ============================================================= */
+
+/* ---------- 0. デモ用：本番組み込み時は不要 ---------- */
+body {
+  margin: 0;
+  background: #fff;
+  color: #445;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.1rem;
+}
+.demo-bar {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 12px;
+  text-align: center;
+}
+.demo-bar strong { color: #ffd; margin-right: 8px; }
+.demo-section-label {
+  background: #f3f4f6;
+  border-left: 4px solid #039;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: .04em;
+  margin: 32px auto 0;
+  max-width: 1080px;
+  font-weight: 600;
+}
+
+/* ---------- 1. 共通ルート変数（追加セクション用） ---------- */
+:root {
+  --asc-c-primary:   #039;        /* ASCコーポレートカラー = #003399 */
+  --asc-c-primary-d: #002e8a;     /* やや濃い紺（hover/strong用） */
+  --asc-c-text:      #445;        /* 本文色（既存body継承） */
+  --asc-c-text-2:    #6c6c6c;     /* 補助テキスト */
+  --asc-c-text-3:    #888;        /* 注釈 */
+  --asc-c-line:      #e2e8f0;     /* 薄い罫線 */
+  --asc-c-bg-alt:    #f5f7fa;     /* 薄いグレー背景 */
+  --asc-c-bg-soft:   #f0f5fb;     /* 紺系の薄い背景（CTAバンド等） */
+  --asc-c-warn-bg:   #fffbf0;     /* 黄系背景（費用Q&A） */
+  --asc-c-warn-bd:   #f0d98a;     /* 黄系罫線 */
+  --asc-c-warn-tx:   #7a5a00;     /* 黄系文字（💡見出し用） */
+
+  --asc-fs-section:  24px;        /* セクション見出し */
+  --asc-fs-card-h:   17px;        /* カード見出し */
+  --asc-fs-body:     14.5px;
+  --asc-fs-sm:       13px;
+  --asc-fs-xs:       12px;
+
+  --asc-sp-1: 8px;
+  --asc-sp-2: 16px;
+  --asc-sp-3: 24px;
+  --asc-sp-4: 32px;
+  --asc-sp-5: 48px;
+
+  --asc-r:    6px;
+  --asc-r-lg: 8px;
+  --asc-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  --asc-shadow-h: 0 6px 18px rgba(0,51,153,0.10);
+}
+
+/* ---------- 2. セクション共通 ---------- */
+.asc-add {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--asc-sp-5) var(--asc-sp-3);
+  box-sizing: border-box;
+}
+.asc-add__head {
+  margin: 0 0 var(--asc-sp-3);
+}
+.asc-add__title {
+  font-size: var(--asc-fs-section);
+  line-height: 1.5;
+  color: var(--asc-c-primary);
+  font-weight: 700;
+  margin: 0 0 var(--asc-sp-1);
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-bottom: 12px;
+}
+.asc-add__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  background: var(--asc-c-primary);
+}
+.asc-add__lead {
+  font-size: var(--asc-fs-body);
+  color: var(--asc-c-text);
+  margin: 0;
+  line-height: 1.85;
+}
+
+/* ---------- 3. 共通ボタン（追加セクション用） ---------- */
+.asc-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 32px;
+  font-size: var(--asc-fs-body);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--asc-r);
+  letter-spacing: 0.04em;
+  border: 2px solid transparent;
+  transition: opacity .2s, transform .05s, background .2s, color .2s;
+  cursor: pointer;
+  line-height: 1.4;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+.asc-add-btn--primary {
+  background: var(--asc-c-primary);
+  color: #fff;
+  border-color: var(--asc-c-primary);
+}
+.asc-add-btn--primary:hover {
+  background: var(--asc-c-primary-d);
+  border-color: var(--asc-c-primary-d);
+  color: #fff;
+}
+.asc-add-btn--outline {
+  background: #fff;
+  color: var(--asc-c-primary);
+  border-color: var(--asc-c-primary);
+}
+.asc-add-btn--outline:hover {
+  background: var(--asc-c-primary);
+  color: #fff;
+}
+.asc-add-btn--invert {
+  background: #fff;
+  color: var(--asc-c-primary);
+  border-color: #fff;
+}
+.asc-add-btn--invert:hover {
+  background: var(--asc-c-bg-soft);
+  color: var(--asc-c-primary-d);
+}
+
+/* =============================================================
+   1. このような企業様におすすめです
+   ============================================================= */
+.asc-add-target__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--asc-sp-2);
+  margin: var(--asc-sp-3) 0 var(--asc-sp-3);
+}
+.asc-add-target__card {
+  background: #fff;
+  border: 1px solid var(--asc-c-line);
+  border-left: 3px solid var(--asc-c-primary);
+  border-radius: var(--asc-r);
+  padding: 20px 22px;
+  box-shadow: var(--asc-shadow);
+  transition: box-shadow .2s, transform .05s;
+}
+.asc-add-target__card:hover {
+  box-shadow: var(--asc-shadow-h);
+  transform: translateY(-1px);
+}
+.asc-add-target__card-q {
+  display: block;
+  color: var(--asc-c-primary);
+  font-size: var(--asc-fs-card-h);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.asc-add-target__card-a {
+  font-size: var(--asc-fs-sm);
+  color: var(--asc-c-text);
+  line-height: 1.85;
+  margin: 0;
+}
+.asc-add-target__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: var(--asc-sp-3);
+}
+.asc-add-target__note {
+  font-size: var(--asc-fs-xs);
+  color: var(--asc-c-text-3);
+  text-align: center;
+  margin: var(--asc-sp-2) 0 0;
+}
+
+/* =============================================================
+   2. よくある課題
+   ============================================================= */
+.asc-add-issues__list {
+  list-style: none;
+  margin: var(--asc-sp-3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.asc-add-issues__item {
+  background: #fff;
+  border: 1px solid var(--asc-c-line);
+  border-radius: var(--asc-r);
+  padding: 14px 18px 14px 46px;
+  font-size: var(--asc-fs-body);
+  color: var(--asc-c-text);
+  line-height: 1.8;
+  position: relative;
+  box-shadow: var(--asc-shadow);
+}
+.asc-add-issues__item::before {
+  content: "✓";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--asc-c-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =============================================================
+   3. ASCが選ばれる3つの理由（要約）
+   ============================================================= */
+.asc-add-reasons {
+  background: var(--asc-c-bg-soft);
+  border-radius: var(--asc-r-lg);
+  padding: var(--asc-sp-4) var(--asc-sp-3);
+  margin: var(--asc-sp-3) 0 0;
+}
+.asc-add-reasons__title {
+  font-size: 18px;
+  color: var(--asc-c-primary);
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 var(--asc-sp-3);
+  position: relative;
+  padding-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.asc-add-reasons__title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: var(--asc-c-primary);
+}
+.asc-add-reasons__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--asc-sp-2);
+}
+.asc-add-reasons__item {
+  background: #fff;
+  border: 1px solid var(--asc-c-line);
+  border-radius: var(--asc-r);
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: var(--asc-shadow);
+}
+.asc-add-reasons__icon {
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: block;
+}
+.asc-add-reasons__name {
+  display: block;
+  color: var(--asc-c-primary);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+}
+.asc-add-reasons__desc {
+  font-size: var(--asc-fs-sm);
+  color: var(--asc-c-text);
+  line-height: 1.85;
+  margin: 0;
+}
+.asc-add-reasons__note {
+  text-align: center;
+  margin: var(--asc-sp-3) 0 0;
+  font-size: var(--asc-fs-xs);
+  color: var(--asc-c-text-2);
+}
+
+/* =============================================================
+   4. 中間CTA
+   ============================================================= */
+.asc-add-midcta {
+  background: var(--asc-c-bg-soft);
+  border-radius: var(--asc-r-lg);
+  padding: var(--asc-sp-5) var(--asc-sp-3);
+  text-align: center;
+  margin: 0;
+  box-sizing: border-box;
+}
+.asc-add-midcta__title {
+  font-size: 22px;
+  color: var(--asc-c-primary);
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+}
+.asc-add-midcta__lead {
+  font-size: var(--asc-fs-body);
+  color: var(--asc-c-text);
+  line-height: 1.85;
+  margin: 0 0 var(--asc-sp-3);
+}
+.asc-add-midcta__contact {
+  display: flex;
+  gap: var(--asc-sp-2);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.asc-add-midcta__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--asc-c-primary);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  padding: 8px 0;
+}
+.asc-add-midcta__tel-label {
+  display: inline-block;
+  font-size: 11px;
+  color: #fff;
+  background: var(--asc-c-primary);
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-right: 4px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.asc-add-midcta__tel-hours {
+  display: block;
+  font-size: 11px;
+  color: var(--asc-c-text-2);
+  margin-top: 2px;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+/* =============================================================
+   5. 費用に関するよくある不安
+   ============================================================= */
+.asc-add-cost {
+  background: var(--asc-c-warn-bg);
+  border: 1px solid var(--asc-c-warn-bd);
+  border-left: 3px solid var(--asc-c-warn-bd);
+  border-radius: var(--asc-r);
+  padding: var(--asc-sp-3) var(--asc-sp-3) var(--asc-sp-3);
+  margin: var(--asc-sp-3) 0 0;
+}
+.asc-add-cost__title {
+  font-size: 16px;
+  color: var(--asc-c-warn-tx);
+  font-weight: 700;
+  margin: 0 0 var(--asc-sp-2);
+  letter-spacing: 0.04em;
+}
+.asc-add-cost__list {
+  margin: 0;
+  padding: 0;
+}
+.asc-add-cost__list dt,
+.asc-add-cost__list dd {
+  margin: 0;
+  padding: 0;
+}
+.asc-add-cost__item {
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(122, 90, 0, 0.18);
+  font-size: var(--asc-fs-body);
+  line-height: 1.85;
+}
+.asc-add-cost__item:last-child { border-bottom: 0; }
+.asc-add-cost__q {
+  color: var(--asc-c-warn-tx);
+  font-weight: 700;
+  margin: 0 0 4px;
+  font-size: var(--asc-fs-sm);
+}
+.asc-add-cost__q::before {
+  content: "Q. ";
+  font-weight: 700;
+  margin-right: 2px;
+}
+.asc-add-cost__a {
+  color: var(--asc-c-text);
+  margin: 0;
+  font-size: var(--asc-fs-sm);
+  line-height: 1.85;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+.asc-add-cost__a::before {
+  content: "A. ";
+  color: var(--asc-c-text-2);
+  font-weight: 700;
+  margin-right: 4px;
+}
+.asc-add-cost__cta {
+  text-align: center;
+  margin: var(--asc-sp-3) 0 0;
+}
+
+/* =============================================================
+   6. NEWSLETTER
+   ============================================================= */
+.asc-add-nl {
+  background: var(--asc-c-bg-soft);
+  padding: var(--asc-sp-5) var(--asc-sp-3);
+  box-sizing: border-box;
+}
+.asc-add-nl__inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+.asc-add-nl__tag {
+  display: inline-block;
+  background: var(--asc-c-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 3px;
+  letter-spacing: 0.18em;
+  margin-bottom: var(--asc-sp-2);
+}
+.asc-add-nl__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+}
+.asc-add-nl__lead {
+  font-size: var(--asc-fs-body);
+  color: var(--asc-c-text);
+  line-height: 1.95;
+  margin: 0 0 var(--asc-sp-4);
+}
+.asc-add-nl__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--asc-sp-2);
+  text-align: left;
+  margin: 0 0 var(--asc-sp-3);
+}
+.asc-add-nl__benefit {
+  background: #fff;
+  border: 1px solid var(--asc-c-line);
+  border-radius: var(--asc-r);
+  padding: 18px 16px;
+  box-shadow: var(--asc-shadow);
+}
+.asc-add-nl__icon {
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+.asc-add-nl__name {
+  display: block;
+  color: var(--asc-c-primary);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  letter-spacing: 0.02em;
+}
+.asc-add-nl__desc {
+  font-size: var(--asc-fs-sm);
+  color: var(--asc-c-text);
+  line-height: 1.8;
+  margin: 0;
+}
+.asc-add-nl__cta {
+  margin-top: var(--asc-sp-2);
+}
+.asc-add-nl__note {
+  margin: 12px 0 0;
+  font-size: var(--asc-fs-xs);
+  color: var(--asc-c-text-3);
+}
+
+/* =============================================================
+   レスポンシブ：タブレット 781〜1024
+   ============================================================= */
+@media (max-width: 1024px) {
+  :root {
+    --asc-fs-section: 22px;
+  }
+  .asc-add { padding: var(--asc-sp-4) var(--asc-sp-3); }
+  .asc-add-midcta { padding: var(--asc-sp-4) var(--asc-sp-3); }
+  .asc-add-nl { padding: var(--asc-sp-4) var(--asc-sp-3); }
+}
+
+/* =============================================================
+   レスポンシブ：SP ≤780
+   ============================================================= */
+@media (max-width: 780px) {
+  :root {
+    --asc-fs-section: 20px;
+    --asc-sp-3: 20px;
+    --asc-sp-4: 28px;
+    --asc-sp-5: 36px;
+  }
+  .asc-add {
+    padding: var(--asc-sp-4) 16px;
+  }
+
+  /* 1. 企業様カード：1カラム縦積み */
+  .asc-add-target__grid { grid-template-columns: 1fr; }
+  .asc-add-target__card { padding: 16px 18px; }
+  .asc-add-target__cta { flex-direction: column; }
+  .asc-add-target__cta .asc-add-btn { width: 100%; }
+
+  /* 2. 課題リスト */
+  .asc-add-issues__item { font-size: 13.5px; padding: 12px 14px 12px 42px; }
+  .asc-add-issues__item::before { left: 12px; width: 20px; height: 20px; font-size: 10px; }
+
+  /* 3. 選ばれる理由：1カラム */
+  .asc-add-reasons { padding: var(--asc-sp-3) 18px; }
+  .asc-add-reasons__items { grid-template-columns: 1fr; }
+  .asc-add-reasons__item { padding: 18px 14px; }
+
+  /* 4. 中間CTA */
+  .asc-add-midcta { padding: var(--asc-sp-4) 18px; }
+  .asc-add-midcta__title { font-size: 19px; }
+  .asc-add-midcta__contact { flex-direction: column; gap: 12px; }
+  .asc-add-midcta__tel { font-size: 22px; }
+  .asc-add-midcta__contact .asc-add-btn { width: 100%; }
+
+  /* 5. 費用 */
+  .asc-add-cost { padding: var(--asc-sp-3) 18px; }
+  .asc-add-cost__cta .asc-add-btn { width: 100%; }
+
+  /* 6. NEWSLETTER */
+  .asc-add-nl { padding: var(--asc-sp-4) 16px; }
+  .asc-add-nl__inner { max-width: 100%; }
+  .asc-add-nl__title { font-size: 19px; }
+  .asc-add-nl__benefits { grid-template-columns: 1fr; }
+  .asc-add-nl__cta .asc-add-btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <strong>DEMO</strong>本ページは追加セクションのデザイン確認用です（noindex）／既存サイトに組み込み時はそれぞれのHTMLパーツのみ抜き出してください
+</div>
+
+
+<!-- ============================================================
+     [パーツ 1] このような企業様におすすめです
+     ============================================================ -->
+<div class="demo-section-label">パーツ① このような企業様におすすめです</div>
+<section class="asc-add asc-add-target" aria-labelledby="asc-add-target-title">
+  <div class="asc-add__head">
+    <h2 class="asc-add__title" id="asc-add-target-title">このような企業様におすすめです</h2>
+    <p class="asc-add__lead">当てはまる状況があれば、ASCのコンサルティングがお役に立てます。</p>
+  </div>
+
+  <div class="asc-add-target__grid">
+    <article class="asc-add-target__card">
+      <strong class="asc-add-target__card-q">何から手をつければいいかわからない</strong>
+      <p class="asc-add-target__card-a">システムの導入・刷新を検討しているが、優先順位や進め方の判断軸がない。</p>
+    </article>
+    <article class="asc-add-target__card">
+      <strong class="asc-add-target__card-q">どこに依頼すればいいかわからない</strong>
+      <p class="asc-add-target__card-a">必要なシステムを導入するにしても、どのベンダー・製品・サービスを選べばよいか判断できない。</p>
+    </article>
+    <article class="asc-add-target__card">
+      <strong class="asc-add-target__card-q">古いシステムが業務の足かせになっている</strong>
+      <p class="asc-add-target__card-a">利用開始から10年以上経過し、現在の業務にあわない／AIなど新しい技術を活用できていない。</p>
+    </article>
+    <article class="asc-add-target__card">
+      <strong class="asc-add-target__card-q">経営方針にあったシステム投資ができていない</strong>
+      <p class="asc-add-target__card-a">経営方針ではAI活用や業務効率化が掲げられているが、具体的な打ち手に落ちていない。</p>
+    </article>
+  </div>
+
+  <div class="asc-add-target__cta">
+    <a class="asc-add-btn asc-add-btn--primary" href="https://www.asckk.co.jp/contactus/services">ご相談・お問い合わせはこちら</a>
+    <a class="asc-add-btn asc-add-btn--outline" href="#about">サービスの詳細を見る</a>
+  </div>
+  <p class="asc-add-target__note">正式なご依頼前の費用は発生しません。まずはお気軽にご相談ください。</p>
+</section>
+
+
+<!-- ============================================================
+     [パーツ 2] よくある課題
+     ============================================================ -->
+<div class="demo-section-label">パーツ② よくある課題</div>
+<section class="asc-add asc-add-issues" aria-labelledby="asc-add-issues-title">
+  <div class="asc-add__head">
+    <h2 class="asc-add__title" id="asc-add-issues-title">よくある課題</h2>
+    <p class="asc-add__lead">取り組みが必要と認識されていても、以下のような状況で足踏みしているケースが多くあります。</p>
+  </div>
+
+  <ul class="asc-add-issues__list">
+    <li class="asc-add-issues__item">他業務も抱えており、システム化計画／DXに取り組む時間が確保できない</li>
+    <li class="asc-add-issues__item">IT知識を持った人財が社内にいないため、議論が活性化しない</li>
+    <li class="asc-add-issues__item">企画・推進をしたいが、どのように進めるのかが分からない</li>
+    <li class="asc-add-issues__item">特定IT分野には強い人財はいるが、広い視野・幅広い知識で取り組むのが難しい</li>
+    <li class="asc-add-issues__item">レガシーシステムが複雑化・ブラックボックス化しており、どこから手を付ければよいか判断できない</li>
+  </ul>
+</section>
+
+
+<!-- ============================================================
+     [パーツ 3] ASCが選ばれる3つの理由（要約）
+     ============================================================ -->
+<div class="demo-section-label">パーツ③ ASCが選ばれる3つの理由（要約）</div>
+<section class="asc-add" aria-labelledby="asc-add-reasons-title">
+  <div class="asc-add__head">
+    <h2 class="asc-add__title" id="asc-add-reasons-title">ASCが選ばれる3つの理由</h2>
+    <p class="asc-add__lead">中堅・中小企業様に長年ご支援を続けてきた弊社の特長を3つに絞ってご紹介します。</p>
+  </div>
+
+  <div class="asc-add-reasons">
+    <h3 class="asc-add-reasons__title">独立系コンサルティングだからできること</h3>
+    <div class="asc-add-reasons__items">
+      <div class="asc-add-reasons__item">
+        <span class="asc-add-reasons__icon" aria-hidden="true">🏢</span>
+        <strong class="asc-add-reasons__name">独立系</strong>
+        <p class="asc-add-reasons__desc">資本は独立しており、ソフトウェア・ハードウェアの販売はおこないません。コンサルティングに特化してクライアントを支援します。</p>
+      </div>
+      <div class="asc-add-reasons__item">
+        <span class="asc-add-reasons__icon" aria-hidden="true">⚖️</span>
+        <strong class="asc-add-reasons__name">公正中立</strong>
+        <p class="asc-add-reasons__desc">第三者の立場から業界動向・製品・サービスを評価。お客様利益を最優先した提言をおこないます。</p>
+      </div>
+      <div class="asc-add-reasons__item">
+        <span class="asc-add-reasons__icon" aria-hidden="true">💰</span>
+        <strong class="asc-add-reasons__name">コストパフォーマンス</strong>
+        <p class="asc-add-reasons__desc">中堅・中小企業向けに最適化されたコスト体系。高い専門性をリーズナブルに提供します。</p>
+      </div>
+    </div>
+    <p class="asc-add-reasons__note">▼ 詳しい選ばれる理由はページ下部でご紹介しています</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [パーツ 4] 中間CTA
+     ============================================================ -->
+<div class="demo-section-label">パーツ④ 中間CTA</div>
+<section class="asc-add" aria-labelledby="asc-add-midcta-title">
+  <div class="asc-add-midcta">
+    <h2 class="asc-add-midcta__title" id="asc-add-midcta-title">まずはお気軽にご相談ください</h2>
+    <p class="asc-add-midcta__lead">「何から始めればいいかわからない」「社内リソースが不足している」<br>そんなお悩みも、初回のご相談でお気軽にお聞かせください。</p>
+    <div class="asc-add-midcta__contact">
+      <a class="asc-add-midcta__tel" href="tel:0335137830" aria-label="お電話でのお問い合わせ 03-3513-7830">
+        <span class="asc-add-midcta__tel-label">TEL</span>
+        <span>
+          03-3513-7830
+          <span class="asc-add-midcta__tel-hours">受付時間：平日 9:00〜18:00</span>
+        </span>
+      </a>
+      <a class="asc-add-btn asc-add-btn--primary" href="https://www.asckk.co.jp/contactus/services">フォームで問い合わせる</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [パーツ 5] 費用に関するよくある不安
+     ============================================================ -->
+<div class="demo-section-label">パーツ⑤ 費用に関するよくある不安</div>
+<section class="asc-add" aria-labelledby="asc-add-cost-title">
+  <div class="asc-add-cost">
+    <h2 class="asc-add-cost__title" id="asc-add-cost-title">💡 費用に関するよくある不安</h2>
+    <dl class="asc-add-cost__list">
+      <div class="asc-add-cost__item">
+        <dt class="asc-add-cost__q">まずは現状整理だけでも相談できますか？</dt>
+        <dd class="asc-add-cost__a">初回のヒアリングは無料で承っております。</dd>
+      </div>
+      <div class="asc-add-cost__item">
+        <dt class="asc-add-cost__q">予算が限られているが対応可能ですか？</dt>
+        <dd class="asc-add-cost__a">支援範囲を調整してスモールスタートも可能です。</dd>
+      </div>
+      <div class="asc-add-cost__item">
+        <dt class="asc-add-cost__q">途中で要件が変わった場合はどうなりますか？</dt>
+        <dd class="asc-add-cost__a">都度、合意のうえで進めますので安心してご相談ください。</dd>
+      </div>
+    </dl>
+    <p class="asc-add-cost__cta">
+      <a class="asc-add-btn asc-add-btn--primary" href="https://www.asckk.co.jp/contactus/services">費用について相談する</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [パーツ 6] NEWSLETTER
+     ※ 既存フッター（<footer id="colophon">）の直前に挿入する想定
+     ============================================================ -->
+<div class="demo-section-label">パーツ⑥ ニュースレター（メルマガ）／フッター直前に挿入</div>
+<section class="asc-add-nl" aria-labelledby="asc-add-nl-title">
+  <div class="asc-add-nl__inner">
+    <div class="asc-add-nl__tag">NEWSLETTER</div>
+    <h2 class="asc-add-nl__title" id="asc-add-nl-title">IT経営の最前線を、専門家が解説するコラムをお届け</h2>
+    <p class="asc-add-nl__lead">中堅・中小企業の経営者・IT担当者向けに、業務改善・DX推進・システム化計画の実務コラムを無料配信します。</p>
+
+    <div class="asc-add-nl__benefits">
+      <div class="asc-add-nl__benefit">
+        <span class="asc-add-nl__icon" aria-hidden="true">📝</span>
+        <strong class="asc-add-nl__name">実務直結のテーマ</strong>
+        <p class="asc-add-nl__desc">BPR・業務改善・DX・システム化計画・RFPなど、現場で使える内容を毎回解説します。</p>
+      </div>
+      <div class="asc-add-nl__benefit">
+        <span class="asc-add-nl__icon" aria-hidden="true">⚖️</span>
+        <strong class="asc-add-nl__name">ベンダー中立の情報</strong>
+        <p class="asc-add-nl__desc">独立系コンサルタントが書く、特定製品に偏らないフラットな視点のコラムです。</p>
+      </div>
+      <div class="asc-add-nl__benefit">
+        <span class="asc-add-nl__icon" aria-hidden="true">🔓</span>
+        <strong class="asc-add-nl__name">完全無料・いつでも解除可</strong>
+        <p class="asc-add-nl__desc">費用は一切かかりません。配信停止もワンクリックで可能です。</p>
+      </div>
+    </div>
+
+    <div class="asc-add-nl__cta">
+      <a class="asc-add-btn asc-add-btn--primary" href="https://www.beerfroth.com/std/do/ordermail?idstr_user=dgekf5yl" target="_blank" rel="noopener noreferrer">メールマガジンに登録する →</a>
+    </div>
+    <p class="asc-add-nl__note">登録後はいつでも解除できます。個人情報は厳重に管理します。</p>
+  </div>
+</section>
+
+</body>
+</html>
