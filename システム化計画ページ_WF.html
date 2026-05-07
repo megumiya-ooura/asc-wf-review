@@ -288,7 +288,7 @@ body { padding-top: 36px; }
 }
 .wf-case-card p { margin: 4px 0; color: #333; }
 
-/* ── 価格補足（DXデザイン共通） ── */
+/* ── 価格補足（DXデザイン共通・旧定義） ── */
 .wf-price-note {
   background: #fffbf0;
   border: 1px solid #f0d98a;
@@ -299,6 +299,103 @@ body { padding-top: 36px; }
 }
 .wf-price-note ul { margin: 8px 0 0; padding-left: 18px; }
 .wf-price-note li { margin-bottom: 4px; }
+
+/* ── 費用に関するよくある不安（Q&Aパネル） ── */
+.wf-cost-faq {
+  background: #fffbf0;
+  border: 1px solid #f0d98a;
+  border-radius: 8px;
+  padding: 22px 24px 24px;
+  margin: 16px;
+}
+.wf-cost-faq__title {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #7a5a00;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-bottom: 10px;
+}
+.wf-cost-faq__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background: #d4a64a;
+}
+.wf-cost-faq__lead {
+  margin: 8px 0 16px;
+  font-size: 12.5px;
+  color: #8a6e2a;
+  line-height: 1.7;
+}
+.wf-cost-faq__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wf-cost-faq__item {
+  background: #fff;
+  border: 1px solid #efe1b8;
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+.wf-cost-faq__q,
+.wf-cost-faq__a {
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.7;
+}
+.wf-cost-faq__q {
+  font-size: 13.5px;
+  color: #1F1F1F;
+  font-weight: 700;
+}
+.wf-cost-faq__a {
+  font-size: 13px;
+  color: #555;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #efe1b8;
+}
+.wf-cost-faq__label {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  margin-top: 1px;
+}
+.wf-cost-faq__label--q {
+  background: #003399;
+  color: #fff;
+}
+.wf-cost-faq__label--a {
+  background: #fff;
+  color: #6b6b6b;
+  border: 1px solid #c8c0a4;
+}
+.wf-cost-faq__cta {
+  text-align: center;
+  margin: 18px 0 0;
+}
+@media (max-width: 780px) {
+  .wf-cost-faq { padding: 18px 16px 20px; margin: 14px 12px; }
+  .wf-cost-faq__item { padding: 12px; }
+}
 
 /* ── FAQ ── */
 .wf-faq { margin: 4px; }
@@ -635,17 +732,27 @@ body { padding-top: 36px; }
            ⑪ 価格補足（追加）
            ───────────────────────────────────────── -->
       <div class="wf-add">
-        <div class="wf-price-note" style="margin: 16px 16px;">
-          <strong style="font-size:14px; color:#003399;">💡 費用に関するよくある不安</strong>
-          <ul>
-            <li>「まずは現状整理だけでも相談できますか？」→ 初回ヒアリングは無料で承っております。</li>
-            <li>「対象範囲が広すぎて費用が心配」→ 支援範囲を絞ってスモールスタートも可能です。</li>
-            <li>「途中で要件が変わった場合は？」→ 都度合意の上で進めますので安心してご相談ください。</li>
-          </ul>
-        </div>
-        <p style="text-align:center; padding-bottom: 16px; margin: 0;">
-          <a class="wf-btn" href="https://www.asckk.co.jp/contactus/services?sid=sysplan">費用について相談する</a>
-        </p>
+        <section class="wf-cost-faq" aria-labelledby="wf-cost-faq-title">
+          <h4 class="wf-cost-faq__title" id="wf-cost-faq-title">費用に関するよくある不安</h4>
+          <p class="wf-cost-faq__lead">ご相談前に多くいただく質問にお答えしています。</p>
+          <dl class="wf-cost-faq__list">
+            <div class="wf-cost-faq__item">
+              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>まずは現状整理だけでも相談できますか？</span></dt>
+              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>初回のヒアリングは無料で承っております。</span></dd>
+            </div>
+            <div class="wf-cost-faq__item">
+              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>対象範囲が広すぎて費用が心配です。</span></dt>
+              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>支援範囲を絞ってスモールスタートも可能です。</span></dd>
+            </div>
+            <div class="wf-cost-faq__item">
+              <dt class="wf-cost-faq__q"><span class="wf-cost-faq__label wf-cost-faq__label--q">Q</span><span>途中で要件が変わった場合はどうなりますか？</span></dt>
+              <dd class="wf-cost-faq__a"><span class="wf-cost-faq__label wf-cost-faq__label--a">A</span><span>都度合意の上で進めますので、安心してご相談ください。</span></dd>
+            </div>
+          </dl>
+          <p class="wf-cost-faq__cta">
+            <a class="wf-btn" href="https://www.asckk.co.jp/contactus/services?sid=sysplan">費用について相談する</a>
+          </p>
+        </section>
       </div>
 
 
